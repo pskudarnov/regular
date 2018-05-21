@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Лабораторная работа №5</title>
+</head>
+<body>
+
+<script>
+
+    var obj = {
+        'one_index': 123123,
+        'two_name': 'val3@ue',
+        'three_name': 1123,
+        'four_name': 'Mi_et',
+        'five_index': 123123,
+        'six_index': 'hee',
+        'seven_test': 12341,
+        'eight_test': 'test',
+        'nine_index': 423234,
+        'ten_naMe': 'слов4^о'
+    };
+
+    function test(obj) {
+
+        var result = {};
+
+        for (var item in obj) {
+
+            if ((/name/i).test(item)) {
+
+                var arr = obj[item].toString().match(/[A-zА-я_\s]+/gi);
+
+                if (arr && arr.join('').length === obj[item].toString().length) { //сравниваем изначальное выражение с регулярным
+
+                    result[item] = obj[item];
+
+                } else {
+
+                    result[item] = '- Ошибка, может содержать только буквы русского и латинского алфавитов, пробел и знак подчеркивания'
+
+                }
+
+            } else if ((/index/i).test(item)) {
+
+                if (obj[item].toString().match(/\d+/gi)) {
+
+                    result[item] = obj[item];
+
+                } else {
+
+                    result[item] = '- Ошибка, может содержать только цифры.';
+
+                }
+
+            }
+
+        }
+
+        return result;
+
+    }
+
+    result = test(obj);
+
+</script>
+
+
+</body>
+</html>
