@@ -13,7 +13,7 @@
         'two_name': 'val3@ue',
         'three_name': 1123,
         'four_name': 'Mi_et',
-        'five_index': 123123,
+        'index': 123123,
         'six_index': 'hee',
         'seven_test': 12341,
         'eight_test': 'test',
@@ -29,7 +29,7 @@
 
             if ((/name/i).test(item)) {
 
-                var arr = obj[item].toString().match(/[A-zА-я_\s]+/gi);
+                var arr = obj[item].toString().match(/[A-Za-zА-Яа-я_\s]+/gi);
 
                 if (arr && arr.join('').length === obj[item].toString().length) { //сравниваем изначальное выражение с регулярным
 
@@ -41,9 +41,9 @@
 
                 }
 
-            } else if ((/index/i).test(item)) {
+            } else if ((/^index$/i).test(item)) {
 
-                if (obj[item].toString().match(/\d+/gi)) {
+                if (obj[item].toString().match(/^\d+$/gi)) {
 
                     result[item] = obj[item];
 
